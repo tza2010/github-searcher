@@ -53,7 +53,7 @@ function CardsContainer({
       />
       {result.length === 0 && isLoading ? (
         <LoadingSpinner />
-      ) : githubError ? (
+      ) : githubError && result.length === 0 ? (
         <div className="mt-10 flex items-center justify-center">
           Something went wrong{githubError ? `, ${githubError}` : ""}
         </div>
@@ -72,7 +72,11 @@ function CardsContainer({
           hasMore={hasMore}
           endMessage={
             <div className="col-span-2 md:col-span-3">
-              <div>End of {searchType}</div>
+              <div>
+                {githubError
+                  ? "You can try again in few seconds"
+                  : `End of ${searchType}`}
+              </div>
             </div>
           }
         >

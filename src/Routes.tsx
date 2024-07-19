@@ -1,13 +1,18 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home/Home";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Home />,
+      errorElement: <div>404</div>,
+    },
+  ],
   {
-    path: "/",
-    element: <Home />,
-    errorElement: <div>404</div>,
-  },
-]);
+    basename: "/github-searcher",
+  }
+);
 
 function Routes() {
   return <RouterProvider router={router} />;

@@ -28,6 +28,7 @@ function CardsContainer({
   const result = useSelector((state: RootState) => state.github.result);
   const isLoading = useSelector((state: RootState) => state.github.isLoading);
   const hasMore = useSelector((state: RootState) => state.github.hasMore);
+  const githubError = useSelector((state: RootState) => state.github.error);
   const dispatch = useDispatch<AppDispatch>();
 
   return (
@@ -52,6 +53,10 @@ function CardsContainer({
       />
       {result.length === 0 && isLoading ? (
         <LoadingSpinner />
+      ) : githubError ? (
+        <div className="mt-10 flex items-center justify-center">
+          Something went wrong{githubError ? `, ${githubError}` : ""}
+        </div>
       ) : result.length ? (
         <InfiniteScroll
           className="!overflow-hidden mt-10 grid gap-4 grid-cols-2 md:grid-cols-3 place-items-center"

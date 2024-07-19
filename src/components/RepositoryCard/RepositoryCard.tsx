@@ -29,6 +29,9 @@ function RepositoryCard({ repository }: Props) {
         <p className="text-gray-700 text-sm">
           Watchers: {repository.watchers_count}
         </p>
+        <p className="text-gray-700 text-sm">
+          Stars: {repository.stargazers_count}
+        </p>
       </div>
     </div>
   );
